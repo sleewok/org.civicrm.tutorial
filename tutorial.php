@@ -333,7 +333,7 @@ function tutorial_civicrm_navigationMenu(&$menu) {
     'label' => ts('Edit tutorial'),
     'url' => '#tutorial-edit',
     'name' => 'tutorial_edit',
-    'permission' => 'administer CiviCRM',
+    'permission' => 'administer CiviTutorial',
     'separator' => 2,
     'icon' => 'crm-i fa-pencil-square',
   ]);
@@ -341,7 +341,7 @@ function tutorial_civicrm_navigationMenu(&$menu) {
     'label' => ts('Create new tutorial'),
     'url' => '#tutorial-add',
     'name' => 'tutorial_add',
-    'permission' => 'administer CiviCRM',
+    'permission' => 'administer CiviTutorial',
     'icon' => 'crm-i fa-plus-circle',
     'separator' => 2,
   ]);
@@ -352,3 +352,12 @@ function tutorial_civicrm_alterAPIPermissions($entity, $action, &$params, &$perm
     $permissions['tutorial']['mark'] = ['access CiviCRM'];
   }
 }
+
+function tutorial_civicrm_permission(&$permissions) {
+  $prefix = ts('CiviCRM Tutorial') . ': '; // name of extension or module
+  $permissions['administer CiviTutorial'] = array(
+    $prefix . ts('administer CiviTutorial'),  // label
+    ts('Create or edit CiviCRM Tutorials'),  // description
+  );
+}
+
